@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const { Torrent, torrentSchema } = require('./Torrent'); // Update the path accordingly
+const { torrentSchema } = require('./Torrent'); // Update the path accordingly
 
-const torrentSchema = new mongoose.Schema({
+const clientSchema = new mongoose.Schema({
     randID: String,
     clientName: String,
     userAgent: String,
@@ -11,6 +11,10 @@ const torrentSchema = new mongoose.Schema({
     peerID: String,
     torrents: [torrentSchema]
 });
+
+clientSchema.virtual('availableUpload')
+.set(function(value) {})
+.get(function() {})
 
 const Client = mongoose.model('Client', clientSchema);
 
